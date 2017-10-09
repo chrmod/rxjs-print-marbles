@@ -1,5 +1,8 @@
 {
   "name": "rxjs-print-marbles",
+  "description": "Opposite of Rx.TestScheduler.parseMarbles",
+  "repository": "https://github.com/chrmod/rxjs-print-marbles",
+  "author": "Krzysztof Jan Modras <chrmod@chrmod.net>",
   "version": "0.1.0",
   "scripts": {
     "build": "raureif build",
