@@ -1,0 +1,25 @@
+{
+  "name": "rxjs-print-marbles",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "raureif build",
+    "start": "raureif serve",
+    "test": "raureif test --ci",
+    "prepublish": "npm run build",
+    "prebuild": "npm run test"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist/*",
+    "!dist/node",
+    "!dist/polyfill.js"
+  ],
+  "devDependencies": {
+    "raureif": "2.0.6",
+    "raureif-typescript": "^2.1.0",
+    "rxjs": "^5.4.3",
+    "typescript": "^2.5.3",
+    "yarn": "^1.1.0"
+  },
+  "license": "MIT"
+}
