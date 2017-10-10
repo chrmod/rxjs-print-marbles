@@ -10,8 +10,24 @@ export default function printMarbles(notifications = []) {
 
   notifications.forEach(({ frame, notification }) => {
     const index = Math.ceil(frame / 10);
+
     if (notification.kind === 'N') {
-      marbles[index] = notification.value || '-';
+      const currentValue = marbles[index];
+      const newValue = notification.value || '-';
+
+      if (currentValue === '-') {
+        marbles[index] = newValue;
+      } else if (currentValue instanceof Array) {
+        marbles[index] = [
+          ...currentValue,
+          newValue,
+        ];
+      } else {
+        marbles[index] = [
+          currentValue,
+          newValue,
+        ];
+      }
     }
 
     if (notification.kind === 'C') {
@@ -23,5 +39,15 @@ export default function printMarbles(notifications = []) {
     }
   });
 
-  return marbles.join('');
+  const marblesString = '';
+
+  marbles.forEach((marble) => {
+    if (marble instanceof Array) {
+      marblesString += `(${marble.join('')})`;
+    } else {
+      marblesString += marble;
+    }
+  });
+
+  return marblesString;
 }

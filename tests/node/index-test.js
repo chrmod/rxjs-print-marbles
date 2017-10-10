@@ -17,12 +17,26 @@ describe('printMarbles', function () {
   });
 
 
-  it('is oposite of Rx.TestScheduler.parseMarble', function () {
-    const example0 = '-|';
-    expect(subject(example0)).to.equal(example0);
-    const example1 = '-------a---b---|';
-    expect(subject(example1)).to.equal(example1);
-    const example2 = '-#';
-    expect(subject(example2)).to.equal(example2);
+  describe('acts as oppsite of Rx.TestScheduler.parseMarble', function () {
+    it('handles stream completion', function () {
+      const example = '-|';
+      expect(subject(example)).to.equal(example);
+    });
+
+    it('handles stream error', function () {
+      const example = '-#';
+      expect(subject(example)).to.equal(example);
+    });
+
+    it('handles simple stream', function () {
+      const example = '-------a---b---|';
+      expect(subject(example)).to.equal(example);
+    });
+
+    xit('handles multile values stream', function () {
+      const example = '(ab)-|';
+      expect(subject(example)).to.equal(example);
+    });
   });
 });
+
